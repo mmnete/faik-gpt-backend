@@ -22,6 +22,7 @@ app.use(cors({origin:true,credentials: true}));
 app.use(express.json());
 
 app.post('/rewrite', async (req, res) => {
+
     let inputText = req.body.inputText || '';
 
     if (inputText === '') {
@@ -44,7 +45,7 @@ app.post('/rewrite', async (req, res) => {
         return;
       })
       .catch((err) => { 
-        res.json({ status: 'ERROR', text: '', error: err });
+        res.json({ status: 'ERROR', text: '', error: err + ' ' + process.env.GPT_KEY });
         return;
      });
 });
