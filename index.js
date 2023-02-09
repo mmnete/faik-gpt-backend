@@ -22,7 +22,7 @@ app.use(cors({origin:true,credentials: true}));
 app.use(express.json());
 
 app.post('/rewrite', async (req, res) => {
-    await delay(30000);
+    await delay(5000);
 
     let inputText = req.body.inputText || '';
 
