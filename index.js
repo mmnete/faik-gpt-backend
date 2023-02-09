@@ -22,6 +22,7 @@ app.use(cors({origin:true,credentials: true}));
 app.use(express.json());
 
 app.post('/rewrite', async (req, res) => {
+    await delay(30000);
 
     let inputText = req.body.inputText || '';
 
@@ -41,11 +42,11 @@ app.post('/rewrite', async (req, res) => {
         stop: ["You:"],
       })
       .then((response) => { 
-        res.json({ status: 'SUCCESS', text: response.data?.choices?.at(0)?.text || '', error: ''});
+        res.json({ status: 'SUCCESS', text: response.data.choices.at(0).text || '', error: ''});
         return;
       })
       .catch((err) => { 
-        res.json({ status: 'ERROR', text: '', error: err + ' ' + process.env.GPT_KEY });
+        res.json({ status: 'ERROR', text: '', error: err + ' '});
         return;
      });
 });
