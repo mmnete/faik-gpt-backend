@@ -29,6 +29,8 @@ app.post('/rewrite', async (req, res) => {
         return;
     }
 
+    /*.data.choices.at(0).text */ /*response.data.choices.at(0).text || '' */
+    
     await openai.createCompletion({
         model: "text-davinci-003",
         prompt: inputText,
@@ -40,7 +42,7 @@ app.post('/rewrite', async (req, res) => {
         stop: ["You:"],
       })
       .then((openAiResponse) => {
-        res.json({ status: 'SUCCESS', text: JSON.stringify(openAiResponse.data.response) /*.data.choices.at(0).text */ /*response.data.choices.at(0).text || '' */, error: ''});
+        res.json({ status: 'SUCCESS', text: JSON.stringify(openAiResponse.data.response), error: ''});
         return;
       })
       .catch((err) => { 
