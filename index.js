@@ -40,7 +40,7 @@ app.post('/rewrite', async (req, res) => {
         stop: ["You:"],
       })
       .then((openAiResponse) => {
-        res.json({ status: 'SUCCESS', text: openAiResponse.data.response, error: ''});
+        res.json({ status: 'SUCCESS', text: openAiResponse.data.choices[0].text, error: ''});
         return;
       })
       .catch((err) => { 
