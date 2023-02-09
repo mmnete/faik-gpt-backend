@@ -39,8 +39,8 @@ app.post('/rewrite', async (req, res) => {
         presence_penalty: 0.0,
         stop: ["You:"],
       })
-      .then((response) => { 
-        res.json({ status: 'SUCCESS', text: JSON.stringify(response) /*response.data.choices.at(0).text || '' */, error: ''});
+      .then((openAiResponse) => { 
+        res.json({ status: 'SUCCESS', text: JSON.stringify(openAiResponse) /*response.data.choices.at(0).text || '' */, error: ''});
         return;
       })
       .catch((err) => { 
