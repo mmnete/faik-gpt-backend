@@ -29,8 +29,6 @@ app.post('/rewrite', async (req, res) => {
         return;
     }
 
-    /*.data.choices.at(0).text */ /*response.data.choices.at(0).text || '' */
-
     await openai.createCompletion({
         model: "text-davinci-003",
         prompt: inputText,
