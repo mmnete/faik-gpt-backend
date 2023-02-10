@@ -9,11 +9,7 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-  
-/* Creates an Express application. 
-   The express() function is a top-level 
-   function exported by the express module.
-*/
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -32,12 +28,11 @@ app.post('/rewrite', async (req, res) => {
     await openai.createCompletion({
         model: "text-davinci-003",
         prompt: inputText,
-        temperature: 0.5,
-        max_tokens: 60,
-        top_p: 1.0,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.0,
-        stop: ["You:"],
+        temperature: 0.7,
+        max_tokens: 2901,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
       })
       .then((openAiResponse) => {
         res.json({ status: 'SUCCESS', text: openAiResponse.data.choices[0].text, error: ''});
